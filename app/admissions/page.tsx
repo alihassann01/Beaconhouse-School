@@ -30,7 +30,7 @@ const countryNames: Record<string, string> = {
 const countryFlags: Record<string, string> = {
     pakistan: "🇵🇰",
     malaysia: "🇲🇾",
-    "united-kingdom": "UK",
+    "united-kingdom": "🇬🇧",
     oman: "🇴🇲",
     uae: "🇦🇪",
     philippines: "🇵🇭",
