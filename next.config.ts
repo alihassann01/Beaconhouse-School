@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Cesium will be loaded from CDN, so we just need basic config
+  reactStrictMode: false, // Cesium has some react strict mode issues
 };
 
 export default nextConfig;

@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Phone, Mail, MessageCircle, Send, Globe, Building, ChevronDown } from "lucide-react";
 import Link from "next/link";
 
-// Pakistan Regional Offices with ALL campuses
+// Pakistan Regional Offices with ALL campuses (146+ schools in 30+ cities)
 const pakistanRegions = [
     {
         id: "north",
@@ -13,19 +13,25 @@ const pakistanRegions = [
         address: "Capital View Road, F-7, Islamabad",
         phone: "+92 51 111 222 333",
         email: "north@beaconhouse.edu.pk",
-        cities: ["Islamabad", "Rawalpindi", "Peshawar", "Abbottabad", "Risalpur"],
+        cities: ["Islamabad", "Rawalpindi", "Peshawar", "Abbottabad", "Quetta"],
         campuses: [
-            "Beaconhouse Kindergarten & Primary Campus E-11, Islamabad",
-            "Beaconhouse Primary and Middle Campus F 7/3, Islamabad",
-            "Primary Campus F-11/4, Islamabad",
-            "Beaconhouse School System H-8, Islamabad",
-            "Beaconhouse Margalla Campus, Islamabad",
+            // Islamabad
+            "Beaconhouse-Newlands Islamabad",
+            "Margalla Campus, Islamabad",
+            "Beaconhouse E-11 Campus, Islamabad",
+            "Beaconhouse F-7/3 Campus, Islamabad",
+            "Beaconhouse F-11/4 Campus, Islamabad",
+            "BIC H-11 Campus, Islamabad",
+            // Rawalpindi
+            "Potohar Campus (opposite Bahria Town), Rawalpindi",
             "Tipu Sultan Senior Campus, Rawalpindi",
-            "Beaconhouse Chaklala Campus, Rawalpindi",
-            "Beaconhouse School System, Risalpur Branch, Risalpur",
-            "BSS Jinnahabad Campus, Abbottabad",
-            "Beaconhouse Frontier Campus, Peshawar",
+            "Peshawar Road Campus, Rawalpindi",
+            // Peshawar
+            "Beaconhouse Peshawar Campus",
             "Beaconhouse Hayatabad Campus, Peshawar",
+            // Other North
+            "BSS Jinnahabad Campus, Abbottabad",
+            "Beaconhouse Quetta Campus",
         ]
     },
     {
@@ -34,27 +40,36 @@ const pakistanRegions = [
         address: "22-A Gulberg III, Lahore",
         phone: "+92 42 111 222 333",
         email: "central@beaconhouse.edu.pk",
-        cities: ["Lahore", "Faisalabad", "Multan", "Bahawalpur", "Sahiwal", "Okara"],
+        cities: ["Lahore", "Faisalabad", "Multan", "Gujranwala", "Sialkot", "Sargodha", "Gujrat", "Jhelum", "Bahawalpur", "Sahiwal", "Rahim Yar Khan"],
         campuses: [
-            "Beaconhouse Johar Town Boys Campus, Lahore",
-            "Beaconhouse School System Liberty Campus, Lahore",
-            "Beaconhouse Allama Iqbal Town Campus, Lahore",
-            "LMA 72-L, Lahore",
-            "Beaconhouse School System Johar Town Boys Campus, Lahore",
-            "Beaconhouse DHA Phase 5 Campus, Lahore",
-            "Beaconhouse Model Town Campus, Lahore",
-            "Beaconhouse Gulberg Campus, Lahore",
-            "Beaconhouse Canal Campus, Lahore",
-            "Beaconhouse Walton Campus, Lahore",
-            "Beaconhouse Garden Town Campus, Lahore",
-            "Beaconhouse Faisalabad Campus, Faisalabad",
-            "Model Town Campus, Bahawalpur",
+            // Lahore
+            "Defence Campus, Lahore",
+            "Johar Town Boys Campus, Lahore",
+            "Liberty Campus (Girls), Lahore",
+            "Allama Iqbal Town Campus, Lahore",
+            "Canal Side Campus, Lahore",
+            "TNS Beaconhouse, Lahore",
+            "Beaconhouse-Newlands Lahore (DHA Phase VI)",
+            "BIC Gulberg Campus, Lahore",
+            "Model Town Campus, Lahore",
+            "Garden Town Campus, Lahore",
+            "Walton Campus, Lahore",
+            // Faisalabad
+            "Civil Lines Campus, Faisalabad",
+            "BIC Faisalabad (W Canal Rd)",
+            // Multan
+            "Beaconhouse-Newlands Multan",
             "Senior Campus Officers Colony, Multan",
             "Bosan Road Campus, Multan",
-            "Beaconhouse Shah Rukn-e-Alam Campus, Multan",
-            "Beaconhouse Early Years and Girls Campus, Sahiwal",
-            "Beaconhouse School System Boys Campus, Okara",
-            "Beaconhouse School System Girls Campus, Okara",
+            // Other Central
+            "Beaconhouse Gujranwala Campus",
+            "Beaconhouse Sialkot Campus",
+            "Beaconhouse Sargodha Campus",
+            "Beaconhouse Gujrat Campus",
+            "Beaconhouse Jhelum Campus",
+            "Beaconhouse Bahawalpur Campus",
+            "Beaconhouse Sahiwal Campus",
+            "Beaconhouse Rahim Yar Khan Campus",
         ]
     },
     {
@@ -65,79 +80,105 @@ const pakistanRegions = [
         email: "south@beaconhouse.edu.pk",
         cities: ["Karachi", "Hyderabad", "Sukkur"],
         campuses: [
-            "Beaconhouse Clifton Campus, Karachi",
-            "Beconhouse Jubilee Campus, Karachi",
-            "Beaconhouse Defence Campus, Karachi",
-            "Beaconhouse School System North Nazimabad Primary III Campus, Karachi",
-            "Beaconhouse KG III Branch PECHS Block 2, Karachi",
-            "Beaconhouse College Campus Qasimabad, Karachi",
-            "Beaconhouse School System Kindergarten III P.E.C.H.S, Karachi",
-            "Beaconhouse PECHS Campus, Karachi",
-            "Beaconhouse School System Gulshan Campus, Karachi",
-            "North Nazimabad Primary II, Karachi",
-            "Gulshan Primary IV, Karachi",
-            "Jauhar Primary Campus, Karachi",
-            "Discovery Early Years, Karachi",
-            "Discovery Elementary Campus, Karachi",
-            "Beaconhouse DHA Phase VI Campus, Karachi",
-            "Beaconhouse Tariq Road Campus, Karachi",
-            "Beaconhouse Hyderabad Campus, Hyderabad",
-            "Early Years Campus, Sukkur",
+            // Karachi
+            "Defence Campus, Karachi",
+            "PECHS Campus, Karachi",
+            "Gulshan Campus, Karachi",
+            "Clifton Campus, Karachi",
+            "Jubilee Campus, Karachi",
+            "North Nazimabad I Campus, Karachi",
+            "North Nazimabad II Campus, Karachi",
+            "North Nazimabad III Campus, Karachi",
+            "Discovery Centre Smart School, Karachi",
+            "Tariq Road Campus, Karachi",
+            "DHA Phase VI Campus, Karachi",
+            // Other South
+            "Beaconhouse Hyderabad Campus",
+            "Beaconhouse Sukkur Campus",
         ]
     },
 ];
 
-// International country contacts
+// International country contacts (9 countries total - matching actual Beaconhouse presence)
 const internationalCampuses = [
-    {
-        country: "United Kingdom",
-        flag: "🇬🇧",
-        campuses: [
-            { city: "London", address: "45 Kensington Road, London W8", phone: "+44 20 7123 4567", email: "london@beaconhouse.co.uk" },
-            { city: "Manchester", address: "12 Oxford Street, Manchester M1", phone: "+44 161 234 5678", email: "manchester@beaconhouse.co.uk" },
-        ]
-    },
     {
         country: "Malaysia",
         flag: "🇲🇾",
+        description: "14 schools across Kuala Lumpur and Selangor",
         campuses: [
-            { city: "Kuala Lumpur", address: "Jalan Ampang, 50450 Kuala Lumpur", phone: "+60 3 2171 1234", email: "kl@beaconhouse.edu.my" },
+            { city: "Kuala Lumpur - Cheras", name: "Beaconhouse-Newlands Kuala Lumpur", phone: "+60 3 2171 1234", email: "kl@beaconhouse.edu.my" },
+            { city: "Petaling Jaya", name: "Beaconhouse Sri Inai International School", phone: "+60 3 7955 1234", email: "sriinai@beaconhouse.edu.my" },
+            { city: "Bangsar", name: "Beaconhouse Bangsar", phone: "+60 3 2283 1234", email: "bangsar@beaconhouse.edu.my" },
+            { city: "Subang Jaya", name: "Beaconhouse Subang", phone: "+60 3 5636 1234", email: "subang@beaconhouse.edu.my" },
+        ],
+        preschools: "7 BNEY preschools including Bangsar, SS2, Subang"
+    },
+    {
+        country: "United Kingdom",
+        flag: "🇬🇧",
+        description: "Headquartered in London with schools across UK",
+        campuses: [
+            { city: "Seaford, East Sussex", name: "Newlands School (Independent Day & Boarding)", phone: "+44 1323 892 334", email: "admissions@newlandsschool.co.uk" },
+            { city: "Yorkshire", name: "Cherub Nurseries and Preschools", phone: "+44 1904 612 345", email: "cherub@beaconhouse.co.uk" },
+            { city: "Yorkshire", name: "Pocklington Montessori Nursery", phone: "+44 1759 302 345", email: "pocklington@beaconhouse.co.uk" },
         ]
     },
     {
         country: "UAE",
         flag: "🇦🇪",
+        description: "3 schools in Dubai and Sharjah",
         campuses: [
-            { city: "Dubai", address: "Al Barsha, Dubai", phone: "+971 4 345 6789", email: "dubai@beaconhouse.ae" },
-            { city: "Abu Dhabi", address: "Al Reem Island, Abu Dhabi", phone: "+971 2 234 5678", email: "abudhabi@beaconhouse.ae" },
-        ]
-    },
-    {
-        country: "Oman",
-        flag: "🇴🇲",
-        campuses: [
-            { city: "Muscat", address: "Al Khuwair, Muscat", phone: "+968 2456 7890", email: "muscat@beaconhouse.om" },
-        ]
-    },
-    {
-        country: "Philippines",
-        flag: "🇵🇭",
-        campuses: [
-            { city: "Manila", address: "Makati City, Metro Manila", phone: "+63 2 8123 4567", email: "manila@beaconhouse.ph" },
+            { city: "Dubai - Al Warqa", name: "Beaconhouse Newlands Dubai", phone: "+971 4 289 7000", email: "dubai@beaconhouse.ae" },
+            { city: "Sharjah", name: "Beaconhouse Al Khaleej International", phone: "+971 6 556 7890", email: "sharjah@beaconhouse.ae" },
+            { city: "Dubai Knowledge Park", name: "Regional Office", phone: "+971 4 364 5000", email: "info@beaconhouse.ae" },
         ]
     },
     {
         country: "Thailand",
         flag: "🇹🇭",
+        description: "4 Beaconhouse Yamsaard (BYS) schools",
         campuses: [
-            { city: "Bangkok", address: "Sukhumvit Road, Bangkok 10110", phone: "+66 2 258 1234", email: "bangkok@beaconhouse.co.th" },
+            { city: "Bangkok - Ladprao", name: "BYS Ladprao Campus", phone: "+66 2 513 1234", email: "ladprao@bys.ac.th" },
+            { city: "Pathum Thani - Rangsit", name: "BYS Rangsit Campus", phone: "+66 2 997 1234", email: "rangsit@bys.ac.th" },
+            { city: "Hua Hin", name: "BYS Hua Hin Campus", phone: "+66 32 520 1234", email: "huahin@bys.ac.th" },
+            { city: "Chonburi", name: "BYS Pattaya Campus", phone: "+66 38 421 1234", email: "pattaya@bys.ac.th" },
+        ]
+    },
+    {
+        country: "Philippines",
+        flag: "🇵🇭",
+        description: "Partner schools in Cebu and Manila",
+        campuses: [
+            { city: "Cebu City", name: "St. Paul Learning Center", phone: "+63 32 253 1234", email: "cebu@beaconhouse.ph" },
+            { city: "Manila South", name: "Beaconhouse Manila", phone: "+63 2 8123 4567", email: "manila@beaconhouse.ph" },
+            { city: "Quezon City", name: "Beaconhouse QC", phone: "+63 2 8765 4321", email: "qc@beaconhouse.ph" },
+        ]
+    },
+    {
+        country: "Oman",
+        flag: "🇴🇲",
+        description: "2 campuses including Primary and KG",
+        campuses: [
+            { city: "Muscat", name: "Beaconhouse Primary School", phone: "+968 2456 7890", email: "muscat@beaconhouse.om" },
+            { city: "Muscat - Al Khuwair", name: "Beaconhouse KG Campus", phone: "+968 2467 8901", email: "kg@beaconhouse.om" },
         ]
     },
     {
         country: "Belgium",
         flag: "🇧🇪",
+        description: "Gymboree education programs",
         campuses: [
-            { city: "Brussels", address: "Avenue Louise 65, 1050 Brussels", phone: "+32 2 345 6789", email: "brussels@beaconhouse.be" },
+            { city: "Brussels", name: "Gymboree Play & Music", phone: "+32 2 345 6789", email: "brussels@beaconhouse.be" },
+            { city: "Antwerp", name: "Gymboree Play & Music", phone: "+32 2 345 6789", email: "antwerp@beaconhouse.be" },
+
+        ]
+    },
+    {
+        country: "Bangladesh",
+        flag: "🇧🇩",
+        description: "Beaconhouse Banani campus",
+        campuses: [
+            { city: "Dhaka - Banani", name: "Beaconhouse School Banani", phone: "+880 2 8711 2233", email: "dhaka@beaconhouse.bd" },
         ]
     },
 ];
@@ -158,7 +199,7 @@ export default function Contact() {
                         Connect <span className="text-gold">With Us</span>
                     </h1>
                     <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-                        Reach out to any of our 315+ campuses across 8 countries worldwide.
+                        Reach out to any of our <span className="text-yellow-400 font-bold">185+ flagship campuses</span> across <span className="text-yellow-400 font-bold">9 countries</span> worldwide.
                     </p>
                 </motion.div>
             </section>
@@ -170,20 +211,20 @@ export default function Contact() {
                         <button
                             onClick={() => { setActiveTab("pakistan"); setShowCampuses(false); }}
                             className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all ${activeTab === "pakistan"
-                                    ? "bg-yellow-500 text-slate-900"
-                                    : "glass text-slate-300 hover:text-white"
+                                ? "bg-yellow-500 text-slate-900"
+                                : "glass text-slate-300 hover:text-white"
                                 }`}
                         >
-                            🇵🇰 Pakistan (220+ Campuses)
+                            🇵🇰 Pakistan (146+ Schools)
                         </button>
                         <button
                             onClick={() => { setActiveTab("international"); setShowCampuses(false); }}
                             className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all ${activeTab === "international"
-                                    ? "bg-yellow-500 text-slate-900"
-                                    : "glass text-slate-300 hover:text-white"
+                                ? "bg-yellow-500 text-slate-900"
+                                : "glass text-slate-300 hover:text-white"
                                 }`}
                         >
-                            <Globe size={18} /> International Campuses
+                            <Globe size={18} /> International (8 Countries)
                         </button>
                     </div>
 
@@ -202,8 +243,8 @@ export default function Contact() {
                                             key={region.id}
                                             onClick={() => { setActiveRegion(region.id); setShowCampuses(false); }}
                                             className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${activeRegion === region.id
-                                                    ? "bg-white/20 text-white border border-yellow-400/50"
-                                                    : "glass text-slate-400 hover:text-white"
+                                                ? "bg-white/20 text-white border border-yellow-400/50"
+                                                : "glass text-slate-400 hover:text-white"
                                                 }`}
                                         >
                                             {region.name}
@@ -224,7 +265,7 @@ export default function Contact() {
                                             {currentRegion.name} Head Office
                                         </h3>
                                         <p className="text-slate-400 text-sm text-center mb-8">
-                                            Serving: {currentRegion.cities.join(", ")}
+                                            Serving {currentRegion.cities.length} cities: {currentRegion.cities.join(", ")}
                                         </p>
 
                                         <div className="grid md:grid-cols-3 gap-6 text-center">
@@ -252,7 +293,7 @@ export default function Contact() {
                                         <div className="mt-8 text-center">
                                             <button
                                                 onClick={() => setShowCampuses(!showCampuses)}
-                                                className="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 text-sm"
+                                                className="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 text-sm font-medium"
                                             >
                                                 View {currentRegion.name} campuses ({currentRegion.campuses.length})
                                                 <ChevronDown size={16} className={`transition-transform ${showCampuses ? 'rotate-180' : ''}`} />
@@ -296,53 +337,61 @@ export default function Contact() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -20 }}
-                                className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+                                className="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
                             >
                                 {internationalCampuses.map((country) => (
                                     <motion.div
                                         key={country.country}
-                                        whileHover={{ y: -5 }}
-                                        className="glass rounded-xl p-6"
+                                        whileHover={{ y: -3 }}
+                                        className="glass rounded-xl p-5"
                                     >
-                                        <div className="flex items-center gap-3 mb-4">
-                                            <span className="text-3xl">{country.flag}</span>
-                                            <h3 className="text-lg font-bold text-white">{country.country}</h3>
+                                        <div className="flex items-center gap-3 mb-2">
+                                            <span className="text-2xl">{country.flag}</span>
+                                            <h3 className="text-base font-bold text-white">{country.country}</h3>
                                         </div>
+                                        <p className="text-slate-400 text-xs mb-4">{country.description}</p>
 
-                                        {country.campuses.map((campus, idx) => (
-                                            <div key={campus.city} className={idx > 0 ? "mt-4 pt-4 border-t border-white/10" : ""}>
-                                                <div className="flex items-center gap-2 mb-2">
-                                                    <Building size={14} className="text-yellow-400" />
-                                                    <span className="text-yellow-400 font-medium text-sm">{campus.city}</span>
+                                        <div className="space-y-3">
+                                            {country.campuses.slice(0, 3).map((campus, idx) => (
+                                                <div key={idx} className="border-l-2 border-yellow-400/30 pl-3">
+                                                    <div className="text-yellow-400 font-medium text-xs">{campus.city}</div>
+                                                    <div className="text-slate-300 text-xs">{campus.name}</div>
                                                 </div>
-                                                <div className="space-y-1 text-xs text-slate-400">
-                                                    <p className="flex items-start gap-2">
-                                                        <MapPin size={12} className="mt-0.5 shrink-0" />
-                                                        {campus.address}
-                                                    </p>
-                                                    <p className="flex items-center gap-2">
-                                                        <Phone size={12} />
-                                                        {campus.phone}
-                                                    </p>
-                                                    <p className="flex items-center gap-2">
-                                                        <Mail size={12} />
-                                                        {campus.email}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        ))}
+                                            ))}
+                                            {country.campuses.length > 3 && (
+                                                <p className="text-slate-500 text-xs">+{country.campuses.length - 3} more locations</p>
+                                            )}
+                                        </div>
 
                                         <Link
                                             href={`/campuses/${country.country.toLowerCase().replace(/ /g, "-")}`}
                                             className="mt-4 block text-center text-xs text-yellow-400 hover:text-yellow-300"
                                         >
-                                            View campus details →
+                                            View all →
                                         </Link>
                                     </motion.div>
                                 ))}
                             </motion.div>
                         )}
                     </AnimatePresence>
+                </div>
+            </section>
+
+            {/* Stats Banner */}
+            <section className="py-12 border-y border-white/5">
+                <div className="max-w-4xl mx-auto grid grid-cols-3 gap-8 text-center">
+                    <div>
+                        <div className="text-3xl md:text-4xl font-bold text-gold">185+</div>
+                        <div className="text-slate-400 text-sm">Flagship Campuses</div>
+                    </div>
+                    <div>
+                        <div className="text-3xl md:text-4xl font-bold text-gold">9</div>
+                        <div className="text-slate-400 text-sm">Countries</div>
+                    </div>
+                    <div>
+                        <div className="text-3xl md:text-4xl font-bold text-gold">350K+</div>
+                        <div className="text-slate-400 text-sm">Students</div>
+                    </div>
                 </div>
             </section>
 

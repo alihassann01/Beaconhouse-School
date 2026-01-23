@@ -4,16 +4,27 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { MapPin, Building2, Users, ArrowRight, X } from "lucide-react";
+import { Building2, Users, ArrowRight, X } from "lucide-react";
 
-const WorldGlobe = dynamic(() => import("../components/3d/WorldGlobe"), { ssr: false });
+// Use WorldGlobe for 3D visualization (works reliably)
+const WorldGlobe = dynamic(() => import("../components/3d/WorldGlobe"), {
+    ssr: false,
+    loading: () => (
+        <div className="w-full h-full bg-slate-950 flex items-center justify-center">
+            <div className="text-center">
+                <div className="animate-spin w-12 h-12 border-4 border-yellow-400 border-t-transparent rounded-full mx-auto mb-4" />
+                <p className="text-yellow-400">Loading 3D Globe...</p>
+            </div>
+        </div>
+    )
+});
 
 interface Campus {
     country: string;
     city: string;
+    name: string;
     lat: number;
     lng: number;
-    campuses: number;
 }
 
 const countryNames: Record<string, string> = {
@@ -25,6 +36,7 @@ const countryNames: Record<string, string> = {
     philippines: "Philippines",
     thailand: "Thailand",
     belgium: "Belgium",
+    bangladesh: "Bangladesh",
 };
 
 const countryFlags: Record<string, string> = {
@@ -36,6 +48,7 @@ const countryFlags: Record<string, string> = {
     philippines: "🇵🇭",
     thailand: "🇹🇭",
     belgium: "🇧🇪",
+    bangladesh: "🇧🇩",
 };
 
 export default function Admissions() {
@@ -50,24 +63,17 @@ export default function Admissions() {
                         Find Your <span className="text-gold">Campus</span>
                     </h1>
                     <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-                        Explore our global network of campuses across 8 countries. Click on any location to discover more.
+                        Explore our global network of 185 flagship campuses across 9 countries. Zoom in to discover each campus around the world.
                     </p>
                 </motion.div>
             </section>
 
             {/* Globe Section */}
-            <section className="relative h-[70vh] min-h-[500px]">
+            <section className="relative h-[75vh] min-h-[600px]">
                 <WorldGlobe
                     onCampusSelect={setSelectedCampus}
                     selectedCampus={selectedCampus}
                 />
-
-                {/* Instructions */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">
-                    <p className="text-slate-400 text-sm">
-                        <span className="text-yellow-400">Drag</span> to rotate • <span className="text-yellow-400">Scroll</span> to zoom • <span className="text-yellow-400">Click</span> markers to explore
-                    </p>
-                </div>
 
                 {/* Selected Campus Panel */}
                 <AnimatePresence>
@@ -76,7 +82,7 @@ export default function Admissions() {
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: 50 }}
-                            className="absolute top-6 right-6 w-80 glass rounded-2xl p-6"
+                            className="absolute top-6 right-6 w-80 glass rounded-2xl p-6 z-20"
                         >
                             <button
                                 onClick={() => setSelectedCampus(null)}
@@ -96,11 +102,11 @@ export default function Admissions() {
                             <div className="space-y-3 mb-6">
                                 <div className="flex items-center gap-3 text-slate-300">
                                     <Building2 size={16} className="text-yellow-400" />
-                                    <span>{selectedCampus.campuses} Campus{selectedCampus.campuses > 1 ? 'es' : ''}</span>
+                                    <span>{selectedCampus.name}</span>
                                 </div>
                                 <div className="flex items-center gap-3 text-slate-300">
                                     <Users size={16} className="text-yellow-400" />
-                                    <span>{(selectedCampus.campuses * 800).toLocaleString()}+ Students</span>
+                                    <span>British Curriculum</span>
                                 </div>
                             </div>
 
@@ -121,7 +127,7 @@ export default function Admissions() {
                     <h2 className="text-3xl font-[family-name:var(--font-cinzel)] text-center mb-12">
                         Browse by <span className="text-gold">Country</span>
                     </h2>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                         {Object.entries(countryNames).map(([slug, name]) => (
                             <Link key={slug} href={`/campuses/${slug}`}>
                                 <div className="glass rounded-xl p-6 text-center hover:border-yellow-400/30 transition-all group cursor-pointer">

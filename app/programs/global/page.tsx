@@ -13,6 +13,7 @@ const countries = [
     { name: "Philippines", flag: "🇵🇭", campuses: 2, students: "1,800+", cities: ["Manila", "Makati"] },
     { name: "Thailand", flag: "🇹🇭", campuses: 1, students: "800+", cities: ["Bangkok"] },
     { name: "Belgium", flag: "🇧🇪", campuses: 1, students: "500+", cities: ["Brussels"] },
+    { name: "Bangladesh", flag: "🇧🇩", campuses: 1, students: "500+", cities: ["Dhaka"] },
 ];
 
 export default function GlobalProgram() {
@@ -30,10 +31,10 @@ export default function GlobalProgram() {
                         </div>
                     </div>
                     <h1 className="text-5xl md:text-7xl font-[family-name:var(--font-cinzel)] font-bold mb-6">
-                        8 <span className="text-gold">Countries</span>
+                        9 <span className="text-gold">Countries</span>
                     </h1>
                     <p className="text-slate-400 text-lg max-w-3xl mx-auto leading-relaxed">
-                        From Pakistan to Europe, Beaconhouse has established a global network of schools, bringing quality education to students across continents. Our international presence reflects our commitment to educational excellence worldwide.
+                        From Asia to Europe, Beaconhouse has established a global network of schools, bringing quality education to students across continents. Our international presence reflects our commitment to educational excellence worldwide.
                     </p>
                 </motion.div>
             </section>
@@ -43,15 +44,15 @@ export default function GlobalProgram() {
                 <div className="max-w-4xl mx-auto px-6">
                     <div className="grid grid-cols-3 gap-8">
                         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="text-center">
-                            <div className="text-4xl md:text-6xl font-[family-name:var(--font-cinzel)] font-bold text-gold mb-2">8</div>
+                            <div className="text-4xl md:text-6xl font-[family-name:var(--font-cinzel)] font-bold text-gold mb-2">9</div>
                             <p className="text-slate-400 text-sm uppercase tracking-wider">Countries</p>
                         </motion.div>
                         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="text-center">
-                            <div className="text-4xl md:text-6xl font-[family-name:var(--font-cinzel)] font-bold text-gold mb-2">268+</div>
-                            <p className="text-slate-400 text-sm uppercase tracking-wider">Campuses</p>
+                            <div className="text-4xl md:text-6xl font-[family-name:var(--font-cinzel)] font-bold text-gold mb-2">185+</div>
+                            <p className="text-slate-400 text-sm uppercase tracking-wider">Flagship Campuses</p>
                         </motion.div>
                         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="text-center">
-                            <div className="text-4xl md:text-6xl font-[family-name:var(--font-cinzel)] font-bold text-gold mb-2">315K+</div>
+                            <div className="text-4xl md:text-6xl font-[family-name:var(--font-cinzel)] font-bold text-gold mb-2">350K+</div>
                             <p className="text-slate-400 text-sm uppercase tracking-wider">Students</p>
                         </motion.div>
                     </div>

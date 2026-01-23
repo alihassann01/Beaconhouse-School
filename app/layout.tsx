@@ -3,6 +3,7 @@ import { Cinzel, DM_Sans } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
 import Navbar from "./components/ui/Navbar";
+import Script from "next/script";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -28,6 +29,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        {/* Cesium CSS for 3D Globe */}
+        <link
+          rel="stylesheet"
+          href="https://cesium.com/downloads/cesiumjs/releases/1.113/Build/Cesium/Widgets/widgets.css"
+        />
+      </head>
       <body
         className={clsx(
           cinzel.variable,

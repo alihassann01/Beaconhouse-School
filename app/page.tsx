@@ -30,8 +30,8 @@ const bentoItems = [
     href: "/programs/achievers",
   },
   {
-    title: "8 Countries",
-    description: "A global network spanning across continents.",
+    title: "9 Countries",
+    description: "Pakistan, Malaysia, UK, UAE, Thailand, Philippines, Oman, Belgium & Bangladesh.",
     icon: Globe,
     span: "lg:col-span-2",
     href: "/programs/global",
@@ -40,9 +40,10 @@ const bentoItems = [
 
 /* ===== STATS DATA ===== */
 const stats = [
-  { value: "45+", label: "Years of Excellence" },
-  { value: "315K+", label: "Students Worldwide" },
-  { value: "8", label: "Countries" },
+  { value: "50+", label: "Years of Excellence" },
+  { value: "300K+", label: "Students Worldwide" },
+  { value: "185+", label: "Flagship Campuses" },
+  { value: "9", label: "Countries" },
 ];
 
 export default function Home() {
